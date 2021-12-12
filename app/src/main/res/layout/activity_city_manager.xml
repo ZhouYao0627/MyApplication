@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 样式为item_city_manager  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/city_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F5F5F5">
+        <ImageView
+            android:id="@+id/city_iv_back"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/icon_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="返回"
+            android:textSize="23dp"
+            android:layout_marginLeft="40sp"
+            android:layout_marginTop="14dp"/>
+        <ImageView
+            android:id="@+id/city_iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/icon_write"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+        <TextView
+            android:id="@+id/city_tv_title"
+            android:text="城市管理"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <!--分割线-->
+    <ImageView
+        android:id="@+id/city_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DCDCDC"
+        android:layout_below="@id/city_top_layout"/>
+
+    <ListView
+        android:id="@+id/city_lv"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_below="@id/city_line"
+        android:layout_marginTop="0dp"
+        android:divider="@null"><!--divider="@null"不放置分割线-->
+    </ListView>
+
+    <TextView
+        android:id="@+id/tv_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/city_lv"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="35dp"
+        android:text="增加城市"
+        android:textColor="#171111"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/city_iv_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/yun"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:background="#FFF0F0"
+        android:padding="3dp" />
+
+
+</RelativeLayout>

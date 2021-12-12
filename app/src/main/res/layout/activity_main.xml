@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--主界面布局想法为：整体用RelativeLayout，
+内部由RelativeLayout和LinearLayout和ViewPager来布局
+而其他的部分如主界面当中的其他信息，未来三天的信息和指数信息
+应绘制在ViewPager当中所包含的Fragment当中(CityWeatherFragment)-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_out_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg7">
+
+    <!--此RelativeLayout位于布局下方且为左中右结构，中为指示器-->
+    <RelativeLayout
+        android:id="@+id/main_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:id="@+id/main_iv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/icon_add1" />
+        <ImageView
+            android:id="@+id/main_iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/icon_more21"
+            android:layout_marginRight="8dp"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/main_iv_webview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="125dp"
+            android:src="@mipmap/icon_webview" />
+        <ImageView
+            android:id="@+id/main_iv_webview2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/icon_webview2"
+            android:layout_marginRight="110dp"
+            android:layout_alignParentRight="true"/>
+
+        <!--控件在父布局中 水平居中-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_webview"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/bg_webview"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:text="了解最新气候情况"/>-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_webview"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/bg_webview"-->
+<!--            android:layout_marginLeft="85dp"-->
+<!--            android:elevation="8dp"-->
+<!--            android:foreground="?selectableItemBackground"-->
+<!--            android:text="气候"/>-->
+<!--&lt;!&ndash;时景还未建立跳转https://tianqi.moji.com/liveview/china/jiangsu/pukou-district网站&ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_webview1"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/bg_webview"-->
+<!--            android:layout_marginLeft="250dp"-->
+<!--            android:elevation="8dp"-->
+<!--            android:foreground="?selectableItemBackground"-->
+<!--            android:text="时景"/>-->
+
+        <!--中间部分用来放置指示器的按钮-->
+        <LinearLayout
+            android:id="@+id/main_layout_point"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"> <!--居中显示,将这个控件显示在父窗口的中间位置.-->
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--这是上方部分，其为ViewPager，因为其在添加完城市之后可左右滑动-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/main_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_bottom_layout"
+        android:layout_marginBottom="1dp">
+    </androidx.viewpager.widget.ViewPager>
+</RelativeLayout>

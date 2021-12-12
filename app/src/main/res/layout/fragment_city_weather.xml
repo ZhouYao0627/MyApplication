@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--主界面信息应该绘制在ViewPaper当中的包含的fragment当中-->
+<!--将Fragment改为ScrollView是考虑到屏幕的大小防止需要滑动-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg7"
+    android:id="@+id/out_layout">
+
+<!--ScrollView里只能放置一个控件，在此我放置了LinearLayout，这是唯一的控件-->
+    <LinearLayout
+        android:id="@+id/frag_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+<!--因为上半部分为左右结构因此要使用RelativeLayout-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/frag_tv_currenttemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3℃"
+                android:textSize="40sp"
+                android:textStyle="bold"/>
+                <!--从下面的这个TextView开始的文字格式皆使用style来编写-->
+            <TextView
+                android:id="@+id/frag_tv_city"
+                style="@style/todaytext"
+                android:text="江苏省 泗阳县"
+                android:layout_below="@id/frag_tv_currenttemp"/>
+            <TextView
+                android:id="@+id/frag_tv_condition"
+                style="@style/todaytext"
+                android:text="晴"
+                android:layout_below="@id/frag_tv_city"/>
+            <TextView
+                android:id="@+id/frag_tv_date"
+                android:text="2021-1-21"
+                android:layout_below="@id/frag_tv_condition"
+                android:layout_marginTop="10dp"
+                style="@style/todaytext" />
+            <TextView
+                android:id="@+id/frag_tv_wind"
+                style="@style/todaytext"
+                android:layout_below="@id/frag_tv_date"
+                android:layout_marginTop="5dp"
+                android:text="湿度 83%"
+                />
+<!--            <TextView-->
+<!--                android:id="@+id/frag_tv_line1"-->
+<!--                android:layout_width="2dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:layout_toRightOf="@id/frag_tv_wind"-->
+<!--                android:background="#2E8B40"-->
+<!--                android:layout_alignBottom="@id/frag_tv_wind"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginRight="10dp"/>-->
+            <TextView
+                android:id="@+id/frag_tv_temprange"
+                style="@style/todaytext"
+                android:text="气压 1003hPa"
+                android:layout_toRightOf="@+id/frag_tv_wind"
+                android:layout_marginLeft="15dp"
+                android:layout_alignBottom="@id/frag_tv_wind"/>
+<!--android:layout_alignBottom=""//本元素的下边缘和某元素的的下边缘对齐；-->
+            <TextView
+                android:id="@+id/frag_tv_tips"
+                style="@style/todaytext"
+                android:text="铁肩担道义，妙手著文章"
+                android:layout_below="@+id/frag_tv_wind"
+                android:layout_marginTop="8dp"
+                />
+<!--            android:text="天暗下来，你就是阳光~"-->
+
+            <ImageView
+                android:id="@+id/frag_iv_today"
+                android:layout_width="103dp"
+                android:layout_height="195dp"
+                android:layout_marginLeft="330dp"
+                android:layout_marginTop="15dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/figure2" />
+
+        </RelativeLayout>
+
+        <!-- 用LinearLayout占位用于显示未来三天的天气情况-->
+        <!--空掉的地方可以补android:background="@drawable/frag_bg"-->
+        <!--此LinearLayout的背景frag_bg无用，已被删除-->
+        <!--在item_main_center中-->
+        <LinearLayout
+            android:id="@+id/frag_center_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2dp"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/tv_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="未来三天预报"
+                android:textSize="25sp"
+                android:textColor="#007EFF"/>
+        </LinearLayout>
+
+        <!--这里使用VIewPaper较为好些-->
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="本地时景"
+            android:layout_marginTop="1dp"
+            android:textSize="30sp"
+            android:textColor="#007EFF"
+            android:paddingLeft="10dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="180dp"
+                    android:layout_height="300dp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/bg_spring_1"/>
+
+                <Button
+                    android:layout_width="180dp"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_spring_2"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="180dp"
+                    android:layout_height="300dp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/bg_spring_3"
+                    android:layout_marginLeft="10dp"/>
+                <Button
+                    android:layout_width="180dp"
+                    android:layout_height="300dp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/bg_spring_4"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- 用于表示指数信息的线性布局-->
+        <LinearLayout
+            android:id="@+id/frag_index_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:padding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="生活服务"
+                    android:textColor="#007EFF"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/frag_index_tv_dress"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="衣物建议"
+                    android:textSize="30dp"
+                    android:textColor="#000000"
+                    android:drawableLeft="@mipmap/icon_cloth"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="10dp"/>
+                <!--插入的一条横线，用以上下分隔开指数信息-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#0046FF"
+                    android:layout_marginTop="1dp"/>
+                <TextView
+                    android:id="@+id/frag_index_tv_washcar"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="出行建议"
+                    android:textSize="30dp"
+                    android:textColor="#000000"
+                    android:drawableLeft="@mipmap/icon_car"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="10dp"/>
+                <!--插入的一条横线，用以上下分隔开指数信息-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#0046FF"
+                    android:layout_marginTop="1dp"/>
+                <TextView
+                    android:id="@+id/frag_index_tv_cold"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="医院建议"
+                    android:textSize="30dp"
+                    android:textColor="#000000"
+                    android:drawableLeft="@mipmap/icon_ganmao"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="10dp"/>
+                <!--插入的一条横线，用以上下分隔开指数信息-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#0046FF"
+                    android:layout_marginTop="1dp"/>
+                <TextView
+                    android:id="@+id/frag_index_tv_sport"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="运动建议"
+                    android:textSize="30dp"
+                    android:textColor="#000000"
+                    android:drawableLeft="@mipmap/icon_sport"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="10dp"/>
+                <!--插入的一条横线，用以上下分隔开指数信息-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#0046FF"
+                    android:layout_marginTop="1dp"/>
+                <TextView
+                    android:id="@+id/frag_index_tv_rays"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="温度建议"
+                    android:textSize="30dp"
+                    android:textColor="#000000"
+                    android:drawableLeft="@mipmap/icon_light"
+                    android:drawablePadding="20dp"
+                    android:layout_marginTop="10dp"/>
+                <!--插入的一条横线，用以上下分隔开指数信息-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#0046FF"
+                    android:layout_marginTop="1dp"/>
+                <TextView
+                    android:id="@+id/frag_index_tv_umbrella"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="气候建议"
+                    android:textSize="30dp"
+                    android:textColor="#000000"
+                    android:drawablePadding="20dp"
+                    android:drawableLeft="@mipmap/icon_umbrella"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="天气资讯"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textColor="#007EFF"-->
+<!--            android:paddingLeft="10dp" />-->
+
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="    受寒潮天气影响，过去一周出现持续的低温天气，这两天天气有明显的回暖。
+今天福鼎各乡镇最高气温在18℃至23℃之间，以贯岭镇分水23.5℃为最高，市区为22.5℃。配合白天温暖的阳光，
+体感舒适了不少。不过，冷空气又重新派货了，所以温暖十分短暂，降温在即，大家要继续做好保暖的措施。"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textColor="#000000"-->
+                                            />
+
+
+    </LinearLayout>
+</ScrollView>
